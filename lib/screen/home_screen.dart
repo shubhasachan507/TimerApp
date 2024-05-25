@@ -11,15 +11,33 @@ class HomeScreen extends StatelessWidget {
         preferredSize: Size.fromHeight(124),
         child: HomeAppbar(),
       ),
-      floatingActionButton: SizedBox(
-        height: 78,
-        width: 78,
-        child: FloatingActionButton(
-          backgroundColor: const Color(0xffB6EAFF),
-          shape: const CircleBorder(),
-          onPressed: () {},
-          child: Image.asset("asset/images/iAdd-Line.png"),
-        ),
+      body: Stack(
+        children: [
+          const TaskCard(),
+          Align(
+            alignment: Alignment.bottomRight,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  const PressToStartInformation(),
+                  const SizedBox(height: 8.0),
+                  CustomFloatingActionButton(
+                    onPressed: () {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return const NewTaskDialog();
+                          });
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
