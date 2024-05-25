@@ -1,10 +1,40 @@
 import "package:flutter/material.dart";
-import "package:potatotimer/widgets/index.dart";
+import '../index.dart';
 
-class NewTaskDialog extends StatelessWidget {
+class NewTaskDialog extends StatefulWidget {
   const NewTaskDialog({
     super.key,
   });
+
+  @override
+  State<NewTaskDialog> createState() => _NewTaskDialogState();
+}
+
+class _NewTaskDialogState extends State<NewTaskDialog> {
+  final _titleController = TextEditingController();
+  final _descriptionController = TextEditingController();
+  final taskStore = getIt<PotatoTimerStore>();
+  final GlobalKey<FormState> _form1Key = GlobalKey<FormState>();
+  final GlobalKey<FormState> _form2Key = GlobalKey<FormState>();
+
+  void _addTask() {
+    final title = _titleController.text;
+    final description = _descriptionController.text;
+
+    if (_form1Key.currentState!.validate()) {
+      taskStore.addTask(title, description, 0, 0, 0);
+      _titleController.clear();
+      _descriptionController.clear();
+      Navigator.of(context).pop();
+    }
+  }
+
+  @override
+  void dispose() {
+    _titleController.dispose();
+    _descriptionController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +57,20 @@ class NewTaskDialog extends StatelessWidget {
                     style: Theme.of(context).textTheme.headlineLarge),
               ),
               const SizedBox(height: 15),
-              const CustomTextField(title: "Title"),
-              const SizedBox(height: 30),
-              const CustomTextField(
-                title: "Description",
-                maxLines: 5,
-              ),
+              Form(
+                  key: _form1Key,
+                  child: Column(
+                    children: [
+                      CustomTextField(
+                          controller: _titleController, title: "Title"),
+                      const SizedBox(height: 30),
+                      CustomTextField(
+                        controller: _descriptionController,
+                        title: "Description",
+                        maxLines: 5,
+                      ),
+                    ],
+                  )),
               const SizedBox(height: 30),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.0),
@@ -40,9 +78,7 @@ class NewTaskDialog extends StatelessWidget {
               ),
               const SizedBox(height: 80),
               GestureDetector(
-                onTap: () {
-                  Navigator.pop(context);
-                },
+                onTap: _addTask,
                 child: Container(
                   decoration: const BoxDecoration(
                     color: Color(0xffE1DFFF),

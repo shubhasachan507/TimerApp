@@ -1,10 +1,17 @@
 import "package:flutter/material.dart";
 
-class OtpInput extends StatelessWidget {
-  const OtpInput({this.controller, required this.autoFocus, super.key});
+class TimeInputTextField extends StatefulWidget {
+  const TimeInputTextField(
+      {this.controller, required this.autoFocus, super.key});
 
   final TextEditingController? controller;
   final bool autoFocus;
+
+  @override
+  State<TimeInputTextField> createState() => _TimeInputTextFieldState();
+}
+
+class _TimeInputTextFieldState extends State<TimeInputTextField> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,10 +23,10 @@ class OtpInput extends StatelessWidget {
       width: 38,
       child: Center(
         child: TextField(
-          autofocus: autoFocus,
+          autofocus: widget.autoFocus,
           textAlign: TextAlign.center,
           keyboardType: TextInputType.number,
-          controller: controller,
+          controller: widget.controller,
           decoration: const InputDecoration(
             border: InputBorder.none,
             counterText: "",

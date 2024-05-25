@@ -3,15 +3,17 @@ import "package:flutter/material.dart";
 class PlayPauseStopTimer extends StatelessWidget {
   const PlayPauseStopTimer({
     super.key,
+    required this.time,
   });
 
+  final String time;
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Text(
-          "01:00:00",
+          time,
           style: Theme.of(context)
               .textTheme
               .headlineLarge

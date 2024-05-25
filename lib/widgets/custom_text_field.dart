@@ -5,19 +5,27 @@ class CustomTextField extends StatelessWidget {
     super.key,
     required this.title,
     this.maxLines = 1,
+    required this.controller,
   });
 
   final String title;
   final int? maxLines;
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20.0),
-      child: TextField(
+      child: TextFormField(
+        autovalidateMode: AutovalidateMode.onUserInteraction,
+        controller: controller,
         textAlign: TextAlign.start,
         maxLines: maxLines,
         autofocus: true,
+        validator: (val) {
+          if (val!.trim().isEmpty) return '$Title is required.';
+          return null;
+        },
         decoration: InputDecoration(
           floatingLabelStyle: const TextStyle(
             fontSize: 12,

@@ -56,10 +56,28 @@
       "languageVersion": "3.1"
     },
     {
+      "name": "flutter_mobx",
+      "rootUri": "file:///Users/shubhasachan/.pub-cache/hosted/pub.dev/flutter_mobx-2.2.1+1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///Users/shubhasachan/Desktop/flutter/packages/flutter_test",
       "packageUri": "lib/",
       "languageVersion": "3.3"
+    },
+    {
+      "name": "get_it",
+      "rootUri": "file:///Users/shubhasachan/.pub-cache/hosted/pub.dev/get_it-7.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "intl",
+      "rootUri": "file:///Users/shubhasachan/.pub-cache/hosted/pub.dev/intl-0.19.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "leak_tracker",
@@ -104,10 +122,28 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "mobx",
+      "rootUri": "file:///Users/shubhasachan/.pub-cache/hosted/pub.dev/mobx-2.3.3+2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "nested",
+      "rootUri": "file:///Users/shubhasachan/.pub-cache/hosted/pub.dev/nested-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///Users/shubhasachan/.pub-cache/hosted/pub.dev/path-1.9.0",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "provider",
+      "rootUri": "file:///Users/shubhasachan/.pub-cache/hosted/pub.dev/provider-6.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "sky_engine",
@@ -170,7 +206,7 @@
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-05-25T08:48:46.067675Z",
+  "generated": "2024-05-25T16:11:05.622708Z",
   "generator": "pub",
   "generatorVersion": "3.4.1",
   "flutterRoot": "file:///Users/shubhasachan/Desktop/flutter",

@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:potatotimer/widgets/index.dart";
+import '../index.dart';
 
 class SetTaskDuration extends StatelessWidget {
   const SetTaskDuration({
@@ -53,7 +53,7 @@ class DurationTextFieldWithLabel extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const OtpInput(
+        const TimeInputTextField(
           autoFocus: false,
         ),
         Text(
