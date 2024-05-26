@@ -13,6 +13,9 @@ class NewTaskDialog extends StatefulWidget {
 class _NewTaskDialogState extends State<NewTaskDialog> {
   final _titleController = TextEditingController();
   final _descriptionController = TextEditingController();
+  final _hourController = TextEditingController();
+  final _minuteController = TextEditingController();
+  final _secondController = TextEditingController();
   final taskStore = getIt<PotatoTimerStore>();
   final GlobalKey<FormState> _form1Key = GlobalKey<FormState>();
   final GlobalKey<FormState> _form2Key = GlobalKey<FormState>();
@@ -20,9 +23,16 @@ class _NewTaskDialogState extends State<NewTaskDialog> {
   void _addTask() {
     final title = _titleController.text;
     final description = _descriptionController.text;
+    final hour = _hourController.text;
+    final minute = _minuteController.text;
+    final second = _secondController.text;
 
-    if (_form1Key.currentState!.validate()) {
-      taskStore.addTask(title, description, 0, 0, 0);
+    if (_form1Key.currentState!.validate() &&
+        hour.trim().isNotEmpty &&
+        minute.trim().isNotEmpty &&
+        second.trim().isNotEmpty) {
+      taskStore.addTask(title, description, int.parse(hour), int.parse(minute),
+          int.parse(second));
       _titleController.clear();
       _descriptionController.clear();
       Navigator.of(context).pop();
@@ -72,9 +82,13 @@ class _NewTaskDialogState extends State<NewTaskDialog> {
                     ],
                   )),
               const SizedBox(height: 30),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                child: SetTaskDuration(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: SetTaskDuration(
+                  hourController: _hourController,
+                  minuteController: _minuteController,
+                  secondController: _secondController,
+                ),
               ),
               const SizedBox(height: 80),
               GestureDetector(

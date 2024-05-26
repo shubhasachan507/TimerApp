@@ -1,8 +1,5 @@
-import 'dart:async';
-
 import "package:flutter/material.dart";
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:mobx/mobx.dart';
 import '../index.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,7 +13,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final taskStore = getIt<PotatoTimerStore>();
-    final allTask = taskStore.taskList;
     return Scaffold(
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(124),
@@ -25,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Observer(
         builder: (_) => Stack(
           children: [
-            TaskList(allTask: allTask),
+            const TaskList(),
             Align(
               alignment: Alignment.bottomRight,
               child: Padding(
@@ -35,7 +31,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    if (allTask.isEmpty) const PressToStartInformation(),
+                    if (taskStore.taskList.isEmpty)
+                      const PressToStartInformation(),
                     const SizedBox(height: 8.0),
                     CustomFloatingActionButton(
                       onPressed: () {
@@ -57,27 +54,30 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class TaskList extends StatelessWidget {
+class TaskList extends StatefulWidget {
   const TaskList({
     super.key,
-    required this.allTask,
   });
 
-  final ObservableList<Task> allTask;
+  @override
+  State<TaskList> createState() => _TaskListState();
+}
 
+class _TaskListState extends State<TaskList> {
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      itemCount: allTask.length,
-      itemBuilder: (context, index) {
-        return TaskCard(
-          title: allTask[index].title,
-          description: allTask[index].description,
-          hour: 0,
-          minute: 0,
-          second: 4,
-        );
-      },
-    );
+    final taskStore = getIt<PotatoTimerStore>();
+    return Observer(builder: (context) {
+      return ListView.builder(
+        itemCount: taskStore.taskList.length,
+        itemBuilder: (context, index) {
+          print(index);
+          return TaskCard(
+            task: taskStore.taskList[index],
+            index: index,
+          );
+        },
+      );
+    });
   }
 }

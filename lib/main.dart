@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import "index.dart";
 
-void main() {
+void main() async {
   setupLocator();
+  WidgetsFlutterBinding
+      .ensureInitialized(); //used to interact with fluter engine layer
   runApp(const PotatoTimer());
 }
 
