@@ -24,7 +24,7 @@ class CustomTextField extends StatelessWidget {
         maxLines: maxLines,
         autofocus: true,
         validator: (val) {
-          if (val!.trim().isEmpty) return '$Title is required.';
+          if (val!.trim().isEmpty) return '$title is required.';
           return null;
         },
         decoration: InputDecoration(

@@ -14,9 +14,10 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final taskStore = getIt<PotatoTimerStore>();
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: const PreferredSize(
         preferredSize: Size.fromHeight(124),
-        child: HomeAppbar(),
+        child: HomeAppbar(title: AppStrings.appBarTitle),
       ),
       body: Observer(
         builder: (_) => Stack(

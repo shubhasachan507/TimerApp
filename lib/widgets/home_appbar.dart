@@ -4,7 +4,10 @@ import "../index.dart";
 class HomeAppbar extends StatelessWidget {
   const HomeAppbar({
     super.key,
+    required this.title,
   });
+
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,7 @@ class HomeAppbar extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 20.0, bottom: 8),
               child: Text(
-                AppStrings.appBarTitle,
+                title,
                 style: Theme.of(context)
                     .textTheme
                     .headlineLarge

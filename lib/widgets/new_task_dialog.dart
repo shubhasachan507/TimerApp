@@ -26,10 +26,7 @@ class _NewTaskDialogState extends State<NewTaskDialog> {
     final minute = _minuteController.text;
     final second = _secondController.text;
 
-    if (_form1Key.currentState!.validate() &&
-        hour.trim().isNotEmpty &&
-        minute.trim().isNotEmpty &&
-        second.trim().isNotEmpty) {
+    if (_form1Key.currentState!.validate()) {
       taskStore.addTask(title, description, int.parse(hour), int.parse(minute),
           int.parse(second));
       _titleController.clear();
@@ -55,6 +52,7 @@ class _NewTaskDialogState extends State<NewTaskDialog> {
       child: Padding(
         padding: const EdgeInsets.only(top: 20),
         child: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
           keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -79,18 +77,18 @@ class _NewTaskDialogState extends State<NewTaskDialog> {
                         title: AppStrings.description,
                         maxLines: 5,
                       ),
+                      const SizedBox(height: 30),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        child: SetTaskDuration(
+                          hourController: _hourController,
+                          minuteController: _minuteController,
+                          secondController: _secondController,
+                        ),
+                      ),
                     ],
                   )),
-              const SizedBox(height: 30),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: SetTaskDuration(
-                  hourController: _hourController,
-                  minuteController: _minuteController,
-                  secondController: _secondController,
-                ),
-              ),
-              const SizedBox(height: 80),
+              const SizedBox(height: 50),
               GestureDetector(
                 onTap: _addTask,
                 child: Container(

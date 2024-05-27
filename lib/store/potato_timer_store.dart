@@ -21,9 +21,9 @@ class PotatoTimerStore with Store {
 
   @action
   Future fetchTasks() async {
-    final allTasks = await database.allTasks;
+    final getTasks = await database.allTasks;
     runInAction(() {
-      taskList.value = ObservableList.of(sort(allTasks));
+      taskList.value = ObservableList.of(sort(getTasks));
     });
   }
 
