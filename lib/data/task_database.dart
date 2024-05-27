@@ -16,7 +16,6 @@ class TaskDatabase extends _$TaskDatabase {
   int get schemaVersion => 1;
 
   Future<List<TaskData>> get allTasks => select(taskItems).get();
-  Stream<List<TaskData>> watchAllTasks() => select(taskItems).watch();
   Future<void> insertTaskItem(TaskItemsCompanion task) =>
       into(taskItems).insert(task);
   Future<void> updateTask(TaskData task) => update(taskItems).replace(task);

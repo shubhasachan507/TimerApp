@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:potatotimer/index.dart";
 
 class PressToStartInformation extends StatelessWidget {
   const PressToStartInformation({
@@ -11,10 +12,11 @@ class PressToStartInformation extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         Text(
-          "No timers active. \nPress here to start a new one",
+          AppStrings.fabInfo,
           style: Theme.of(context).textTheme.bodyMedium,
+          overflow: TextOverflow.ellipsis,
         ),
-        Image.asset("assets/images/arrow.png"),
+        Image.asset(Images.arrowIcon),
       ],
     );
   }

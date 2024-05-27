@@ -18,7 +18,6 @@ class _NewTaskDialogState extends State<NewTaskDialog> {
   final _secondController = TextEditingController();
   final taskStore = getIt<PotatoTimerStore>();
   final GlobalKey<FormState> _form1Key = GlobalKey<FormState>();
-  final GlobalKey<FormState> _form2Key = GlobalKey<FormState>();
 
   void _addTask() {
     final title = _titleController.text;
@@ -49,7 +48,7 @@ class _NewTaskDialogState extends State<NewTaskDialog> {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: const Color(0xffFBFCFE),
+      backgroundColor: AppColors.dialogBackgroundColor,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
       ),
@@ -63,7 +62,7 @@ class _NewTaskDialogState extends State<NewTaskDialog> {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Text("Add Task",
+                child: Text(AppStrings.dialogTitle,
                     style: Theme.of(context).textTheme.headlineLarge),
               ),
               const SizedBox(height: 15),
@@ -72,11 +71,12 @@ class _NewTaskDialogState extends State<NewTaskDialog> {
                   child: Column(
                     children: [
                       CustomTextField(
-                          controller: _titleController, title: "Title"),
+                          controller: _titleController,
+                          title: AppStrings.title),
                       const SizedBox(height: 30),
                       CustomTextField(
                         controller: _descriptionController,
-                        title: "Description",
+                        title: AppStrings.description,
                         maxLines: 5,
                       ),
                     ],
@@ -95,7 +95,7 @@ class _NewTaskDialogState extends State<NewTaskDialog> {
                 onTap: _addTask,
                 child: Container(
                   decoration: const BoxDecoration(
-                    color: Color(0xffE1DFFF),
+                    color: AppColors.buttonColor,
                     borderRadius: BorderRadius.only(
                         bottomLeft: Radius.circular(25),
                         bottomRight: Radius.circular(25)),
@@ -104,7 +104,7 @@ class _NewTaskDialogState extends State<NewTaskDialog> {
                   width: double.infinity,
                   child: Center(
                     child: Text(
-                      "Add Task",
+                      AppStrings.dialogTitle,
                       style: Theme.of(context).textTheme.labelLarge,
                     ),
                   ),

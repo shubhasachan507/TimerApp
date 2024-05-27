@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:potatotimer/utils/index.dart";
 
 class TimeInputTextField extends StatefulWidget {
   const TimeInputTextField(
@@ -17,7 +18,7 @@ class _TimeInputTextFieldState extends State<TimeInputTextField> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(2),
-        color: const Color(0xffA7F5A7),
+        color: AppColors.secondaryGreenColor,
       ),
       height: 32,
       width: 38,

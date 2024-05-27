@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:drift/drift.dart';
 import 'package:mobx/mobx.dart';
-import 'package:potatotimer/utils/extension.dart';
 
 import '../index.dart';
 
@@ -17,7 +16,7 @@ class PotatoTimerStore with Store {
   @observable
   Observable<ObservableList<TaskData>> taskList =
       Observable(ObservableList<TaskData>());
-  final _audioPlayer = AudioPlayer();
+  AudioPlayer? _audioPlayer;
   Timer? _timer;
 
   @action
@@ -72,6 +71,7 @@ class PotatoTimerStore with Store {
 
   @action
   void startTimer() {
+    _audioPlayer = AudioPlayer();
     _timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
       for (var task in taskList.value) {
         if (task.isRunning) {
@@ -103,11 +103,16 @@ class PotatoTimerStore with Store {
   }
 
   Future<void> _playSound() async {
-    await _audioPlayer.play(AssetSource('song/song.mp3'), volume: 50);
+    await _audioPlayer?.play(AssetSource(Song.path), volume: 50);
   }
 
   Future<void> stopSound() async {
-    await _audioPlayer.stop();
+    //if there were more than one finished card on marking complete song starts again.
+    Iterable<TaskData> finishedTask =
+        taskList.value.where((e) => e.remainingTime == 0);
+    if (finishedTask.length == 1) {
+      await _audioPlayer?.stop();
+    }
   }
 
   String currentDisplayTime(TaskData task) {
@@ -117,6 +122,6 @@ class PotatoTimerStore with Store {
   @action
   void dispose() {
     _timer?.cancel();
-    _audioPlayer.dispose();
+    _audioPlayer?.dispose();
   }
 }

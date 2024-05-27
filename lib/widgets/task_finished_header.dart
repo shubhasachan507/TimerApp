@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "../index.dart";
 
 class TaskFinishedHeader extends StatelessWidget {
   const TaskFinishedHeader({
@@ -10,14 +11,14 @@ class TaskFinishedHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Image.asset("assets/images/soundwave.png"),
+        Image.asset(Images.soundWaveIcon),
         Text(
-          "FINISHED",
+          AppStrings.finished,
           style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                color: const Color(0xff006782),
+                color: AppColors.primaryTealColor,
               ),
         ),
-        Image.asset("assets/images/soundwave.png"),
+        Image.asset(Images.soundWaveIcon),
       ],
     );
   }

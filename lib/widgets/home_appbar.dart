@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "../index.dart";
 
 class HomeAppbar extends StatelessWidget {
   const HomeAppbar({
@@ -15,7 +16,7 @@ class HomeAppbar extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.only(left: 20.0, bottom: 8),
               child: Text(
-                'Potato Timer',
+                AppStrings.appBarTitle,
                 style: Theme.of(context)
                     .textTheme
                     .headlineLarge
@@ -23,7 +24,7 @@ class HomeAppbar extends StatelessWidget {
               ),
             ),
           )),
-      backgroundColor: Colors.green,
+      backgroundColor: AppColors.primaryGreenColor,
     );
   }
 }

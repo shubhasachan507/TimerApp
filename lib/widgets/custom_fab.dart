@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 
+import "../index.dart";
+
 class CustomFloatingActionButton extends StatelessWidget {
   const CustomFloatingActionButton({
     super.key,
@@ -16,10 +18,9 @@ class CustomFloatingActionButton extends StatelessWidget {
         height: 78,
         width: 78,
         child: FloatingActionButton(
-          backgroundColor: const Color(0xffB6EAFF),
           shape: const CircleBorder(),
           onPressed: onPressed,
-          child: Image.asset("assets/images/iAdd-Line.png"),
+          child: Image.asset(Images.fabIcon),
         ),
       ),
     );

@@ -19,7 +19,7 @@ class SetTaskDuration extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          "Duration",
+          AppStrings.duration,
           style: Theme.of(context).textTheme.labelMedium,
         ),
         Row(
@@ -27,21 +27,21 @@ class SetTaskDuration extends StatelessWidget {
           children: [
             DurationTextFieldWithLabel(
               controller: hourController,
-              title: "HH",
+              title: AppStrings.hh,
             ),
             const SizedBox(width: 10),
             const SizedBox(height: 32, child: Text(":")),
             const SizedBox(width: 10),
             DurationTextFieldWithLabel(
               controller: minuteController,
-              title: "MM",
+              title: AppStrings.mm,
             ),
             const SizedBox(width: 10),
             const SizedBox(height: 32, child: Text(":")),
             const SizedBox(width: 10),
             DurationTextFieldWithLabel(
               controller: secondController,
-              title: "SS",
+              title: AppStrings.ss,
             ),
           ],
         ),

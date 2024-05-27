@@ -8,3 +8,4 @@ export "set_task_duration.dart";
 export "task_card.dart";
 export "task_finished_header.dart";
 export "play_pause_timer.dart";
+export 'mark_complete.dart';

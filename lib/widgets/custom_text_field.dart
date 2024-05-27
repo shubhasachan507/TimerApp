@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:potatotimer/index.dart";
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -30,12 +31,12 @@ class CustomTextField extends StatelessWidget {
           floatingLabelStyle: const TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.w500,
-            color: Color(0xff006782),
+            color: AppColors.primaryTealColor,
           ),
           focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(
               width: 2,
-              color: Color(0xff006782),
+              color: AppColors.primaryTealColor,
             ),
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
@@ -45,7 +46,7 @@ class CustomTextField extends StatelessWidget {
           border: const OutlineInputBorder(
             borderSide: BorderSide(
               width: 2,
-              color: Color(0xff70787D),
+              color: AppColors.primaryGreyColor,
             ),
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),

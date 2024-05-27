@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "../index.dart";
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
   _navigateToHome() async {
     await Future.delayed(const Duration(milliseconds: 3000), () {});
     if (mounted) {
-      Navigator.pushReplacementNamed(context, '/home');
+      Navigator.pushReplacementNamed(context, RouteTo.homeScreen);
     }
   }
 
@@ -28,11 +29,11 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset("assets/images/appIcon.png"),
+            Image.asset(Images.appIcon),
             const SizedBox(
               height: 40,
             ),
-            Image.asset("assets/images/appName.png"),
+            Image.asset(Images.appName),
           ],
         ),
       ),

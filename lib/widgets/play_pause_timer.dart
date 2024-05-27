@@ -1,5 +1,4 @@
 import "package:flutter/material.dart";
-import "package:flutter_mobx/flutter_mobx.dart";
 
 import "../index.dart";
 
@@ -21,7 +20,7 @@ class PlayPauseStopTimer extends StatelessWidget {
           style: Theme.of(context)
               .textTheme
               .headlineLarge
-              ?.copyWith(color: const Color(0xff006782)),
+              ?.copyWith(color: AppColors.primaryTealColor),
         ),
         const SizedBox(
           width: 8,
@@ -31,12 +30,13 @@ class PlayPauseStopTimer extends StatelessWidget {
                 onTap: () {
                   taskStore.pauseTimer(currentTask);
                 },
-                child: Image.asset("assets/images/pause.png"))
+                child: Image.asset(Images.pauseIcon))
             : GestureDetector(
                 onTap: () {
                   taskStore.playTimer(currentTask);
                 },
-                child: Image.asset("assets/images/play.png")),
+                child: Image.asset(Images.playIcon),
+              ),
         const SizedBox(
           width: 8,
         ),
@@ -44,7 +44,7 @@ class PlayPauseStopTimer extends StatelessWidget {
             onTap: () {
               taskStore.removeTask(currentTask);
             },
-            child: Image.asset("assets/images/stop.png")),
+            child: Image.asset(Images.stopIcon)),
       ],
     );
   }
