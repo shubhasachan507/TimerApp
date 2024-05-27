@@ -19,7 +19,7 @@ class CustomFloatingActionButton extends StatelessWidget {
           backgroundColor: const Color(0xffB6EAFF),
           shape: const CircleBorder(),
           onPressed: onPressed,
-          child: Image.asset("asset/images/iAdd-Line.png"),
+          child: Image.asset("assets/images/iAdd-Line.png"),
         ),
       ),
     );

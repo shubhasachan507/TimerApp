@@ -2,9 +2,9 @@ import 'package:mobx/mobx.dart';
 
 part 'task.g.dart';
 
-class Task = _Task with _$Task;
+class TaskModel = _TaskModel with _$TaskModel;
 
-abstract class _Task with Store {
+abstract class _TaskModel with Store {
   final String title;
   final String description;
   final int hours, minutes, seconds;
@@ -18,7 +18,7 @@ abstract class _Task with Store {
   @observable
   DateTime? currentTime;
 
-  _Task(
+  _TaskModel(
       {this.remainingTime = 0,
       this.currentTime,
       this.isRunning = true,

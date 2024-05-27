@@ -17,12 +17,10 @@ class TaskDatabase extends _$TaskDatabase {
 
   Future<List<TaskData>> get allTasks => select(taskItems).get();
   Stream<List<TaskData>> watchAllTasks() => select(taskItems).watch();
-  Future<int> insertTask(Insertable<TaskData> task) =>
+  Future<void> insertTaskItem(TaskItemsCompanion task) =>
       into(taskItems).insert(task);
-  Future updateTask(Insertable<TaskData> task) =>
-      update(taskItems).replace(task);
-  Future deleteTask(Insertable<TaskData> task) =>
-      delete(taskItems).delete(task);
+  Future<void> updateTask(TaskData task) => update(taskItems).replace(task);
+  Future<void> deleteTask(TaskData task) => delete(taskItems).delete(task);
 }
 
 LazyDatabase _openConnection() {

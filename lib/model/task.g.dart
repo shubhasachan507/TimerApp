@@ -8,8 +8,9 @@ part of 'task.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$Task on _Task, Store {
-  late final _$isRunningAtom = Atom(name: '_Task.isRunning', context: context);
+mixin _$TaskModel on _TaskModel, Store {
+  late final _$isRunningAtom =
+      Atom(name: '_TaskModel.isRunning', context: context);
 
   @override
   bool get isRunning {
@@ -25,7 +26,7 @@ mixin _$Task on _Task, Store {
   }
 
   late final _$remainingTimeAtom =
-      Atom(name: '_Task.remainingTime', context: context);
+      Atom(name: '_TaskModel.remainingTime', context: context);
 
   @override
   int get remainingTime {
@@ -41,7 +42,7 @@ mixin _$Task on _Task, Store {
   }
 
   late final _$currentTimeAtom =
-      Atom(name: '_Task.currentTime', context: context);
+      Atom(name: '_TaskModel.currentTime', context: context);
 
   @override
   DateTime? get currentTime {

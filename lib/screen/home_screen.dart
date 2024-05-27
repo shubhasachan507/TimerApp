@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Observer(
         builder: (_) => Stack(
           children: [
-            const TaskList(),
+            if (taskStore.taskList.value.isNotEmpty) const TaskList(),
             Align(
               alignment: Alignment.bottomRight,
               child: Padding(
@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    if (taskStore.taskList.isEmpty)
+                    if (taskStore.taskList.value.isEmpty)
                       const PressToStartInformation(),
                     const SizedBox(height: 8.0),
                     CustomFloatingActionButton(
@@ -64,16 +64,28 @@ class TaskList extends StatefulWidget {
 }
 
 class _TaskListState extends State<TaskList> {
+  final taskStore = getIt<PotatoTimerStore>();
+
+  @override
+  void initState() {
+    taskStore.startTimer();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    taskStore.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
-    final taskStore = getIt<PotatoTimerStore>();
     return Observer(builder: (context) {
       return ListView.builder(
-        itemCount: taskStore.taskList.length,
+        itemCount: taskStore.taskList.value.length,
         itemBuilder: (context, index) {
-          print(index);
           return TaskCard(
-            task: taskStore.taskList[index],
+            task: taskStore.taskList.value[index],
             index: index,
           );
         },

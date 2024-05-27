@@ -14,7 +14,7 @@ class PressToStartInformation extends StatelessWidget {
           "No timers active. \nPress here to start a new one",
           style: Theme.of(context).textTheme.bodyMedium,
         ),
-        Image.asset("asset/images/arrow.png"),
+        Image.asset("assets/images/arrow.png"),
       ],
     );
   }

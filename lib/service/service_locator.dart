@@ -5,5 +5,7 @@ import '../index.dart';
 final GetIt getIt = GetIt.instance;
 
 void setupLocator() {
-  getIt.registerSingleton<PotatoTimerStore>(PotatoTimerStore());
+  getIt.registerSingleton<TaskDatabase>(TaskDatabase());
+  getIt.registerSingleton<PotatoTimerStore>(
+      PotatoTimerStore(getIt<TaskDatabase>()));
 }

@@ -10,14 +10,14 @@ class TaskFinishedHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Image.asset("asset/images/soundwave.png"),
+        Image.asset("assets/images/soundwave.png"),
         Text(
           "FINISHED",
           style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                 color: const Color(0xff006782),
               ),
         ),
-        Image.asset("asset/images/soundwave.png"),
+        Image.asset("assets/images/soundwave.png"),
       ],
     );
   }
