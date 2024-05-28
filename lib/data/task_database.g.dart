@@ -23,7 +23,7 @@ class $TaskItemsTable extends TaskItems
   late final GeneratedColumn<String> title = GeneratedColumn<String>(
       'title', aliasedName, false,
       additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 50),
+          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 200),
       type: DriftSqlType.string,
       requiredDuringInsert: true);
   static const VerificationMeta _descriptionMeta =
@@ -32,7 +32,7 @@ class $TaskItemsTable extends TaskItems
   late final GeneratedColumn<String> description = GeneratedColumn<String>(
       'description', aliasedName, false,
       additionalChecks:
-          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 250),
+          GeneratedColumn.checkTextLength(minTextLength: 1, maxTextLength: 500),
       type: DriftSqlType.string,
       requiredDuringInsert: true);
   static const VerificationMeta _hoursMeta = const VerificationMeta('hours');
