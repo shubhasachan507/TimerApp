@@ -12,8 +12,8 @@ class AppStrings {
   static const String ss = 'SS';
   static const String markComplete = 'MARK COMPLETE';
   static const String finished = 'FINISHED';
-  static const String fabInfo =
-      'No timers active. \nPress here to start a new one';
+  static const String noTimerActive = 'No timers active.';
+  static const String startNewOne = 'Press here to start a new one';
 }
 
 class AppColors {
