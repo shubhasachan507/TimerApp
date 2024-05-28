@@ -60,7 +60,7 @@ class _TaskCardState extends State<TaskCard> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Text(
-                maxLines: 3,
+                maxLines: widget.task.remainingTime == 0 ? 2 : 3,
                 widget.task.description,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: AppColors.primaryTealColor,

@@ -10,12 +10,17 @@ part 'task_database.g.dart';
 
 @DriftDatabase(tables: [TaskItems])
 class TaskDatabase extends _$TaskDatabase {
-  TaskDatabase() : super(_openConnection());
+  TaskDatabase(super.e) {
+    _openConnection();
+  }
 
   @override
   int get schemaVersion => 1;
 
-  Future<List<TaskData>> get allTasks => select(taskItems).get();
+  Future<List<TaskData>> get allTasks {
+    return select(taskItems).get();
+  }
+
   Future<void> insertTaskItem(TaskItemsCompanion task) =>
       into(taskItems).insert(task);
   Future<void> updateTask(TaskData task) => update(taskItems).replace(task);
