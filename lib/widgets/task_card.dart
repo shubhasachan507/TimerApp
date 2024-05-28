@@ -22,7 +22,7 @@ class _TaskCardState extends State<TaskCard> {
   Widget build(BuildContext context) {
     return Container(
         margin: const EdgeInsets.all(16),
-        height: widget.task.remainingTime == 0 ? 196 : 161,
+        height: 196,
         width: double.maxFinite,
         decoration: ShapeDecoration(
           shadows: const [
@@ -49,7 +49,7 @@ class _TaskCardState extends State<TaskCard> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Text(
-                maxLines: 2,
+                maxLines: 1,
                 widget.task.title,
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: AppColors.primaryGreenColor,
@@ -60,7 +60,7 @@ class _TaskCardState extends State<TaskCard> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 25),
               child: Text(
-                maxLines: 2,
+                maxLines: 3,
                 widget.task.description,
                 style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                       color: AppColors.primaryTealColor,
