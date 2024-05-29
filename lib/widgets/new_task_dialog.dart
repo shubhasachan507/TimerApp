@@ -27,8 +27,8 @@ class _NewTaskDialogState extends State<NewTaskDialog> {
     final second = _secondController.text;
 
     if (_form1Key.currentState!.validate()) {
-      taskStore.addTask(title, description, int.parse(hour), int.parse(minute),
-          int.parse(second));
+      taskStore.addTask(title, description, int.tryParse(hour) ?? 0,
+          int.tryParse(minute) ?? 0, int.tryParse(second) ?? 0);
       _titleController.clear();
       _descriptionController.clear();
       Navigator.of(context).pop();
@@ -77,17 +77,17 @@ class _NewTaskDialogState extends State<NewTaskDialog> {
                         title: AppStrings.description,
                         maxLines: 5,
                       ),
-                      const SizedBox(height: 30),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                        child: SetTaskDuration(
-                          hourController: _hourController,
-                          minuteController: _minuteController,
-                          secondController: _secondController,
-                        ),
-                      ),
                     ],
                   )),
+              const SizedBox(height: 30),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: SetTaskDuration(
+                  hourController: _hourController,
+                  minuteController: _minuteController,
+                  secondController: _secondController,
+                ),
+              ),
               const SizedBox(height: 50),
               GestureDetector(
                 onTap: _addTask,

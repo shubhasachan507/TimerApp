@@ -14,30 +14,12 @@ class TimeInputTextField extends StatefulWidget {
 }
 
 class _TimeInputTextFieldState extends State<TimeInputTextField> {
-  bool _showErrorBorder = false;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border:
-            _showErrorBorder ? Border.all(color: Colors.red, width: 2) : null,
-        borderRadius: BorderRadius.circular(2),
-      ),
+    return SizedBox(
       height: 32,
       width: 38,
       child: TextFormField(
-        validator: (val) {
-          if (val!.trim().isEmpty) {
-            setState(() {
-              _showErrorBorder = true;
-            });
-            return null;
-          }
-          setState(() {
-            _showErrorBorder = false;
-          });
-          return null;
-        },
         autofocus: widget.autoFocus,
         textAlign: TextAlign.center,
         keyboardType: TextInputType.number,
