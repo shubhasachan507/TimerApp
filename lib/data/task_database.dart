@@ -10,9 +10,7 @@ part 'task_database.g.dart';
 
 @DriftDatabase(tables: [TaskItems])
 class TaskDatabase extends _$TaskDatabase {
-  TaskDatabase(super.e) {
-    _openConnection();
-  }
+  TaskDatabase(QueryExecutor e) : super(_openConnection());
 
   @override
   int get schemaVersion => 1;
@@ -28,6 +26,7 @@ class TaskDatabase extends _$TaskDatabase {
 }
 
 LazyDatabase _openConnection() {
+  // the LazyDatabase util lets us find the right location for the file async.
   return LazyDatabase(() async {
     final dbFolder = await getApplicationDocumentsDirectory();
     final file = File(path.join(dbFolder.path, 'db.sqlite'));
