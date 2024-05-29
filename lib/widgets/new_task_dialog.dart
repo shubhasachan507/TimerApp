@@ -39,6 +39,10 @@ class _NewTaskDialogState extends State<NewTaskDialog> {
   void dispose() {
     _titleController.dispose();
     _descriptionController.dispose();
+    _hourController.dispose();
+    _minuteController.dispose();
+    _secondController.dispose();
+
     super.dispose();
   }
 
