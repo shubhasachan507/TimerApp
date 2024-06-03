@@ -6,7 +6,8 @@ import '../index.dart';
 final GetIt getIt = GetIt.instance;
 
 void setupLocator() {
+  getIt.registerSingleton<AudioService>(AudioService());
   getIt.registerSingleton<TaskDatabase>(TaskDatabase(NativeDatabase.memory()));
   getIt.registerSingleton<PotatoTimerStore>(
-      PotatoTimerStore(getIt<TaskDatabase>()));
+      PotatoTimerStore(getIt<TaskDatabase>(), getIt<AudioService>()));
 }
