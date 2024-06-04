@@ -9,7 +9,10 @@ class PotatoTimerStore with Store {
   final TaskDatabase database;
   final AudioService audioService;
 
-  PotatoTimerStore(this.database, this.audioService) {
+  PotatoTimerStore(
+    this.database,
+    this.audioService,
+  ) {
     fetchTasks();
   }
 
@@ -69,21 +72,36 @@ class PotatoTimerStore with Store {
   }
 
   @action
+  Future updateTaskList(List<TaskData> taskList) async {
+    await database.updateTaskList(taskList);
+    fetchTasks();
+  }
+
+  @action
   void startTimer() {
     _timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
+      List<TaskData> updatedTasks = [];
+
       for (var task in taskList.value) {
         if (task.isRunning) {
           if (task.remainingTime > 0) {
-            task = task.copyWith(
-                isRunning: task.isRunning,
-                remainingTime: task.remainingTime - 1,
-                currentTime: Value(
-                    task.currentTime!.subtract(const Duration(seconds: 1))));
-            updateTask(task);
+            // Create a new task with the updated values
+            var updatedTask = task.copyWith(
+              isRunning: task.isRunning,
+              remainingTime: task.remainingTime - 1,
+              currentTime: Value(
+                task.currentTime!.subtract(const Duration(seconds: 1)),
+              ),
+            );
+            // Add the updated task to the list
+            updatedTasks.add(updatedTask);
           } else {
             audioService.playSound();
           }
         }
+      }
+      if (updatedTasks.isNotEmpty) {
+        updateTaskList(updatedTasks);
       }
     });
   }

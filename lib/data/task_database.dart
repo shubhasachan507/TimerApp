@@ -22,6 +22,12 @@ class TaskDatabase extends _$TaskDatabase {
   Future<void> insertTaskItem(TaskItemsCompanion task) =>
       into(taskItems).insert(task);
   Future<void> updateTask(TaskData task) => update(taskItems).replace(task);
+  Future<void> updateTaskList(List<TaskData> tasks) async {
+    await batch((batch) {
+      batch.insertAllOnConflictUpdate(taskItems, tasks);
+    });
+  }
+
   Future<void> deleteTask(TaskData task) => delete(taskItems).delete(task);
 }
 
