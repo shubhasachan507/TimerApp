@@ -1,4 +1,4 @@
-# potatotimer
+# timerdash
 
 A new Flutter project.
 
