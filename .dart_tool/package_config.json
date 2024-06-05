@@ -704,13 +704,13 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "potatotimer",
+      "name": "timerdash",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     }
   ],
-  "generated": "2024-05-27T19:05:59.129527Z",
+  "generated": "2024-06-05T03:37:45.822700Z",
   "generator": "pub",
   "generatorVersion": "3.4.1",
   "flutterRoot": "file:///Users/shubhasachan/Desktop/flutter",

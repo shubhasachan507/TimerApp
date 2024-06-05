@@ -38,10 +38,29 @@ class _HomeScreenState extends State<HomeScreen> {
                     const SizedBox(height: 8.0),
                     CustomFloatingActionButton(
                       onPressed: () {
-                        showDialog(
+                        showModalBottomSheet(
+                            isScrollControlled: true,
+                            shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(25),
+                                    topRight: Radius.circular(25))),
+                            isDismissible: true,
+                            backgroundColor: AppColors.dialogBackgroundColor,
+                            clipBehavior: Clip.hardEdge,
                             context: context,
                             builder: (BuildContext context) {
-                              return const NewTaskDialog();
+                              return DraggableScrollableSheet(
+                                  initialChildSize: 0.75,
+                                  minChildSize: 0.25,
+                                  maxChildSize: 0.75,
+                                  expand: false,
+                                  builder: (context, _) => Padding(
+                                        padding: EdgeInsets.only(
+                                            bottom: MediaQuery.of(context)
+                                                .viewInsets
+                                                .bottom),
+                                        child: const NewTaskDialog(),
+                                      ));
                             });
                       },
                     ),

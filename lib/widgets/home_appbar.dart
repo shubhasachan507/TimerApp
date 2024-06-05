@@ -13,7 +13,7 @@ class HomeAppbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(50),
+          preferredSize: const Size.fromHeight(10),
           child: Align(
             alignment: Alignment.bottomLeft,
             child: Padding(
@@ -23,11 +23,12 @@ class HomeAppbar extends StatelessWidget {
                 style: Theme.of(context)
                     .textTheme
                     .headlineLarge
-                    ?.copyWith(color: Colors.white),
+                    ?.copyWith(color: AppColors.primaryTealColor),
               ),
             ),
           )),
-      backgroundColor: AppColors.primaryGreenColor,
+      //  backgroundColor: AppColors.primaryGreenColor,
+      backgroundColor: AppColors.dialogBackgroundColor,
     );
   }
 }

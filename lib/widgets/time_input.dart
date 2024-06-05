@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 import "package:flutter/services.dart";
-import "package:potatotimer/utils/index.dart";
+import "package:timerdash/utils/index.dart";
 
 class TimeInputTextField extends StatefulWidget {
   const TimeInputTextField(

@@ -29,11 +29,22 @@ class _SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(Images.appIcon),
+            CircleAvatar(
+              maxRadius: MediaQuery.of(context).size.height * .2,
+              backgroundImage: const AssetImage(
+                Images.appIcon,
+              ),
+            ),
             const SizedBox(
               height: 40,
             ),
-            Image.asset(Images.appName),
+            Text(
+              "Timer Dash",
+              style: Theme.of(context)
+                  .textTheme
+                  .displayLarge
+                  ?.copyWith(color: const Color.fromARGB(255, 10, 63, 143)),
+            )
           ],
         ),
       ),

@@ -15,7 +15,7 @@ class PotatoTimer extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Potato Timer",
+      title: "Timer Dash",
       theme: ThemeData(
         floatingActionButtonTheme: const FloatingActionButtonThemeData(
             backgroundColor: AppColors.fabBackgroundColor),

@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-import "package:potatotimer/index.dart";
+import "package:timerdash/index.dart";
 
 class PressToStartInformation extends StatelessWidget {
   const PressToStartInformation({

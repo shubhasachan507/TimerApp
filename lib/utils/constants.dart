@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppStrings {
   static const String appName = 'My Awesome App';
-  static const String appBarTitle = 'Potato Timer';
+  static const String appBarTitle = 'TimerDash';
   static const String dialogTitle = 'Add Task';
   static const String title = 'Title';
   static const String description = 'Description';
